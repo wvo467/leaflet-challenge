@@ -21,7 +21,7 @@ function magColor(magnitude) {
   case magnitude > 5:
     return "#b42c07";
   case magnitude > 4:
-    return "#b42c07";
+    return "#feb24c";
   case magnitude > 3:
     return "#baae15";
   case magnitude > 2:
@@ -53,7 +53,6 @@ d3.json(jsonData, function(data){
         fillColor: magColor(feature.properties.mag),
         color: "#000000",
         radius: getRadius(feature.properties.mag),
-        stroke: true,
         weight: 0.5
       };
     }
@@ -62,6 +61,7 @@ d3.json(jsonData, function(data){
       pointToLayer: function(feature, latlng) {
         return L.circleMarker(latlng);
       },
+      // Styles each marker depending on its features.
       style: styleInfo,
       // Generate a pop up explaining details for each earthquake
       onEachFeature: function(feature, layer) {
